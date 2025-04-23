@@ -8,7 +8,7 @@ const fs = require('fs');
 let router = express.Router()
 const pino = require("pino");
 const {
-	default: Wasi_Tech,
+	default: MUQEET_Tech,
 	useMultiFileAuthState,
 	jidNormalizedUser,
 	Browsers,
@@ -28,13 +28,13 @@ const {
 } = require("node:fs/promises")
 router.get('/', async (req, res) => {
 	const id = makeid();
-	async function WASI_MD_QR_CODE() {
+	async function MUQEET_MD_QR_CODE() {
 		const {
 			state,
 			saveCreds
 		} = await useMultiFileAuthState('./temp/' + id)
 		try {
-			let Qr_Code_By_Wasi_Tech = Wasi_Tech({
+			let Qr_Code_By_MUQEET_Tech = MUQEET_Tech({
 				auth: state,
 				printQRInTerminal: false,
 				logger: pino({
@@ -43,8 +43,8 @@ router.get('/', async (req, res) => {
 				browser: Browsers.macOS("Desktop"),
 			});
 
-			Qr_Code_By_Wasi_Tech.ev.on('creds.update', saveCreds)
-			Qr_Code_By_Wasi_Tech.ev.on("connection.update", async (s) => {
+			Qr_Code_By_MUQEET_Tech.ev.on('creds.update', saveCreds)
+			Qr_Code_By_MUQEET_Tech.ev.on("connection.update", async (s) => {
 				const {
 					connection,
 					lastDisconnect,
@@ -56,38 +56,38 @@ router.get('/', async (req, res) => {
 					let data = fs.readFileSync(__dirname + `/temp/${id}/creds.json`);
 					await delay(800);
 				   let b64data = Buffer.from(data).toString('base64');
-				   let session = await Qr_Code_By_Wasi_Tech.sendMessage(Qr_Code_By_Wasi_Tech.user.id, { text: '' + b64data });
+				   let session = await Qr_Code_By_MUQEET_Tech.sendMessage(Qr_Code_By_MUQEET_Tech.user.id, { text: '' + b64data });
 	
-				   let WASI_MD_TEXT = `
-*_Session Connected By Wasi Tech_*
+				   let MUQEET_MD_TEXT = `
+*_Session Connected By MUQEET Tech_*
 *_Made With 🤍_*
 ______________________________________
 ╔════◇
-║ *『AMAZING YOU'VE CHOSEN WASI MD』*
+║ *『AMAZING YOU'VE CHOSEN MUQEET MD』*
 ║ _You Have Completed the First Step to Deploy a Whatsapp Bot._
 ╚════════════════════════╝
 ╔═════◇
 ║  『••• 𝗩𝗶𝘀𝗶𝘁 𝗙𝗼𝗿 𝗛𝗲𝗹𝗽 •••』
-║❒ *Ytube:* _youtube.com/@wasitech1
-║❒ *Owner:* _https://wa.me/message/THZ3I25BYZM2E1_
-║❒ *Repo:* _https://github.com/wasixd/WASI-MD_
-║❒ *WaGroup:* _https://chat.whatsapp.com/FF6YuOZTAVB6Lu65cnY5BN_
-║❒ *WaChannel:* _https://whatsapp.com/channel/0029VaDK8ZUDjiOhwFS1cP2j_
-║❒ *Plugins:* _https://github.com/Itxxwasi 
+║❒ *Ytube:* _youtube.com/@IsagiTroll_
+║❒ *Owner:* _https://wa.me/923163954173_
+║❒ *Repo:* _https://github.com/muqeet908/MUQEET-MD_
+║❒ *WaGroup:* _https://whatsapp.com/channel/0029Vax9eYb9MF8y8mfpIh3v_
+║❒ *WaChannel:* _https://whatsapp.com/channel/0029Vax9eYb9MF8y8mfpIh3v_
+║❒ *Plugins:* _https://github.com/muqeet908_
 ╚════════════════════════╝
 _____________________________________
 	
 _Don't Forget To Give Star To My Repo_`
-	 await Qr_Code_By_Wasi_Tech.sendMessage(Qr_Code_By_Wasi_Tech.user.id,{text:WASI_MD_TEXT},{quoted:session})
+	 await Qr_Code_By_MUQEET_Tech.sendMessage(Qr_Code_By_MUQEET_Tech.user.id,{text: MUQEET_MD_TEXT},{quoted:session})
 
 
 
 					await delay(100);
-					await Qr_Code_By_Wasi_Tech.ws.close();
+					await Qr_Code_By_MUQEET_Tech.ws.close();
 					return await removeFile("temp/" + id);
 				} else if (connection === "close" && lastDisconnect && lastDisconnect.error && lastDisconnect.error.output.statusCode != 401) {
 					await delay(10000);
-					WASI_MD_QR_CODE();
+					MUQEET_MD_QR_CODE();
 				}
 			});
 		} catch (err) {
@@ -100,6 +100,6 @@ _Don't Forget To Give Star To My Repo_`
 			await removeFile("temp/" + id);
 		}
 	}
-	return await WASI_MD_QR_CODE()
+	return await MUQEET_MD_QR_CODE()
 });
 module.exports = router
